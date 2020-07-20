@@ -93,8 +93,61 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <%= yield %> 
+  <body> 
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <strong><a class="navbar-brand" href="/">Mike's Cantina</a></strong>
+    </div>
+    <div id="navbar" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav navbar-right">
+      <li class="active">Mike's Cantina</li>
+        
+        <%unless user_signed_in?%> 
+        <li><%= link_to new_user_session_path, :class => "glyphicon glyphicon-log-in" do %>
+          <strong>Login</strong> 
+        <% end %></li>
+        <li><%= link_to new_user_registration_path, :class => "glyphicon glyphicon-user" do %>
+          <strong>SignUp</strong>
+        <% end %></li>
+        <%end%> 
+        <%if user_signed_in?%> 
+        <li><%= link_to('Cocktails', cocktail_recipes_path)%></li> 
+        <li><%= link_to('Categories', categories_path)%></li> 
+        <li><%= link_to('Create a Cocktail', new_cocktail_recipe_path) %></li> 
+        <li><%= link_to('Ingredients', ingredients_path)%></li> 
+        <li><%= link_to "Profile Page", current_user %></li> 
+        <%end%> 
+        
+       
+      </ul>
+    </div> 
+
+ 
+
+      
+    </div><!--/.nav-collapse -->
+  </div>
+  </nav> 
+  <div class="container">
+
+      
+  <%= yield %> 
+  
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p> 
+
+
+
+
+</div><!-- /.container --> 
+<center><big><%= button_to('Logout', destroy_user_session_path, method: :delete) if user_signed_in? %></big</center>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
   </body>
