@@ -13,19 +13,19 @@
     <center> 
     <div class="jumbotron"> 
         <h2>Cocktail of the Day:</h2>
-        <%= render partial: "cocktail_recipes/cocktail", locals: {cocktail_recipe: @cocktail_recipes.of_the_day} %>
+        
         </div> 
 
     <div class="jumbotron"> 
         <h2>Most Talked about Cocktail:</h2>
-        <%= render partial: "cocktail_recipes/cocktail", locals: {cocktail_recipe: @cocktail_recipes.most_comments} %>
+        
     </div>
 
      <div class="jumbotron"> 
         <h2>Five Newest Cocktails:</h2> 
         <hr class="my-4"> 
     </div>    
-        <%= render partial: "cocktail_recipes/cocktails", locals: {cocktail_recipes: @cocktail_recipes.five_latest_cocktail_recipes} %>
+       
     </center>
     <%end%>
     
