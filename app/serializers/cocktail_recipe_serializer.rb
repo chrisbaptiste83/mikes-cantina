@@ -1,3 +1,3 @@
 class CocktailRecipeSerializer < ActiveModel::Serializer
-  attributes :id
+  attributes :id, :title, :description, :user
 end

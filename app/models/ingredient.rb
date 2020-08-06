@@ -1,5 +1,5 @@
 class Ingredient < ApplicationRecord 
-    belongs_to :formula 
+    belongs_to :cocktail_recipe
 
     def self.search(search)
         where("name LIKE ?", "%#{search}%") 

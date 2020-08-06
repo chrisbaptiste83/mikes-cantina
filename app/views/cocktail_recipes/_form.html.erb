@@ -15,22 +15,7 @@
     
     <%= f.hidden_field :user_id %> 
 
-    <div id="ingredientsSet">
-    <h3>Ingredients: <small>(Please write amount and ingredient on each line)</small></h3>
   
-    <%= f.fields_for :ingredients do |ingredient_fields| %>
-      <div class="ingredientsForm input-group mb-3">
-        <%= ingredient_fields.text_field :name, :class => "form-control"%>
-        <span class="input-group-text">
-          <button type="button" class="removeIngredient close"> &times;</button>
-        </span>
-      </div>
-    <% end %>
-  </div>
-  
-  <div class ="actions" style="text-align: right">
-    <a href="javascript:;" id="addNewIngredient" class='btn btn-primary btn-sm'>Add Ingredient</a>
-  </div>
       </center>
  
 
@@ -43,7 +28,9 @@
   <h4><label>Upload an Image:</label></h4>
   <%= f.file_field :avatar %><br></br>
 
+  <p>
   <big><%= f.submit %></big> 
+  </p>
 
 <% end %> 
 

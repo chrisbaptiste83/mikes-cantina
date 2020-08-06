@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
   
   devise_for :users
-  resources :ingredients, only: [:show, :index]
-  resources :cocktail_recipes
+  
   resources :categories, only: [:show, :index]
   
   root to: 'home#index' 
@@ -12,7 +11,10 @@ Rails.application.routes.draw do
     resources :cocktail_recipes, only: [:show, :index, :new]
   end 
 
-  resources :cocktail_recipes do
+  resources :ingredients 
+  
+  resources :cocktail_recipes do 
+    resources :ingredients 
     resources :comments
   end
   
