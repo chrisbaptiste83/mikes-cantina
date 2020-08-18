@@ -11,7 +11,7 @@ class CocktailRecipe < ApplicationRecord
 
     validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/ 
 
-    scope :most_comments, -> { order("comments_count DESC").first } 
+    scope :most_comments, -> { order("comments_count desc nulls last").first} 
     scope :five_latest_cocktail_recipes,  -> { order("created_at desc").limit(5)}
     scope :of_the_day,  -> { order('RANDOM()').first}
 
@@ -25,7 +25,7 @@ class CocktailRecipe < ApplicationRecord
     
     def self.by_user(user_id)
       where(user: user_id)
-    end
+    end 
      
     def self.search(search)
       where("title LIKE ?", "%#{search}%") 
