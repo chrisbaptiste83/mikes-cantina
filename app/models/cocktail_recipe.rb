@@ -43,12 +43,5 @@ class CocktailRecipe < ApplicationRecord
 
     
 
-    def delete_ingredients_from_recipe
-        ingredients.size.times do
-        ingredient = RecipeIngredient.find_by(cocktail_recipe_id: self.id)
-        ingredient.delete
-     end
-    end 
-
   end
 

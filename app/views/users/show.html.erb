@@ -7,22 +7,23 @@
         <h2>What would you like to do?</h3></br>
         <%= link_to "New Cocktail", new_user_cocktail_recipe_path(@user), class: "btn btn-primary btn-l" %>     
         <%= link_to "Categories", categories_path, class: "btn btn-primary btn-m" %> 
-        <%= link_to "Ingredients", ingredients_path, class: "btn btn-primary btn-m" %><br></br> 
         <%= link_to "All Cocktails", cocktail_recipes_path, class: "btn btn-primary btn-m" %><br></br>
     </div> 
     <center> 
     <div class="jumbotron"> 
-        <h2>Cocktail of the Day:</h2>
+        <h2>Cocktail of the Day:</h2> 
+        <%= render partial: "cocktail_recipes/cocktail", locals: {cocktail_recipe: @cocktail_recipes.of_the_day} %>
         
         </div> 
 
     <div class="jumbotron"> 
         <h2>Most Talked about Cocktail:</h2>
-        
+        <%= render partial: "cocktail_recipes/cocktail", locals: {cocktail_recipe: @cocktail_recipes.most_comments} %>
     </div>
 
      <div class="jumbotron"> 
         <h2>Five Newest Cocktails:</h2> 
+        <%= render partial: "cocktail_recipes/cocktails", locals: {cocktail_recipes: @cocktail_recipes.five_latest_cocktail_recipes} %>
         <hr class="my-4"> 
     </div>    
        
@@ -34,7 +35,7 @@
         <h1><%=@user.username%>'s Recipes:</h1> 
         <hr class="my-4">  
         <center>
-        #<%= render partial: "cocktail_recipes/cocktails", locals: {cocktail_recipes: @user.cocktail_recipes} %> 
+        <%= render partial: "cocktail_recipes/cocktails", locals: {cocktail_recipes: @user.cocktail_recipes} %> 
         </center>
     </div> 
     <%end%>

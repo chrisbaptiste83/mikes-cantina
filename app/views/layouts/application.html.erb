@@ -4,8 +4,10 @@
     <title>MikesCantina</title> 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
     <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+    <%= csp_meta_tag %> 
+    <link rel="stylesheet" href="https://unpkg.com/tachyons@4.10.0/css/tachyons.min.css"/> 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" integrity="sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX" crossorigin="anonymous">
   
@@ -122,7 +124,6 @@
         <li><%= link_to('Cocktails', cocktail_recipes_path)%></li> 
         <li><%= link_to('Categories', categories_path)%></li> 
         <li><%= link_to('Create a Cocktail', new_cocktail_recipe_path) %></li> 
-        <li><%= link_to('Ingredients', ingredients_path)%></li> 
         <li><%= link_to "Profile Page", current_user %></li> 
         <%end%> 
         

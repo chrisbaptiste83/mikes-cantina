@@ -14,7 +14,9 @@ require("channels")
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
+
   
+
   class CocktailAPI {
   
   
@@ -62,7 +64,7 @@ require("channels")
       return ` 
         <form class="addIngredient">
           <p>
-            <h3><label class="db">Ingredient Name:</label></h3>
+            <h3><label class="db">Add Quantity and Ingredient:</label></h3>
             <input type="text" class="db w-60" name="ingredient" id="ingredient" /><br> 
           </p>   
           <input type="submit" value="Add Ingredient to Cocktail" />  
@@ -97,7 +99,8 @@ require("channels")
   
     render() {
       return `
-        <ul><h4>${this.name}</h4><button class="deleteIngredient" data-ingredient-id="${this.id}">Delete</button></ul>
+      <ul class="f3 light-gray fw4 mt2 black-60"><big>${this.name}</big> <button class="deleteIngredient f6 link dim br-pill ph3 pv2 mb2 dib white bg-black" data-ingredient-id="${this.id}">Delete</button></ul>
+
         
       `
     }
@@ -111,6 +114,14 @@ require("channels")
     document.addEventListener('click', (e) => {
         if(e.target.matches('.deleteIngredient')) { 
           let ingredient = Ingredient.findById(e.target.dataset.ingredientId) 
+          ingredient.remove()
+            .then(ingredient => {
+              cocktailIngredient = e.target.parentElement
+              cocktailIngredient.remove() 
+            }) 
+        } 
+        if(e.target.matches('.deleteButton')) { 
+          let cocktail_id = document.URL.split('/')[4]  
           ingredient.remove()
             .then(ingredient => {
               cocktailIngredient = e.target.parentElement
@@ -136,8 +147,8 @@ require("channels")
     }) 
   
     document.addEventListener('submit', (e) => {
-        e.preventDefault() 
-        if(e.target.matches('.addIngredient')) {
+        if(e.target.matches('.addIngredient')) { 
+          e.preventDefault() 
           let ingredientData = {} 
           ingredientData.name = document.querySelector('input[type="text"]').value
           ingredientData.cocktail_recipe_id = document.URL.split('/')[4] 
@@ -150,6 +161,6 @@ require("channels")
     })
   })
   
-   
+
   
     

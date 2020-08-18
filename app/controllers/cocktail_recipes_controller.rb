@@ -26,7 +26,15 @@ class CocktailRecipesController < ApplicationController
 
     def index 
       @users = User.all   
-      @cocktail_recipes = CocktailRecipe.all.order(:title)
+      if params[:search]
+        @cocktail_recipes = CocktailRecipe.search(params[:search]).order("created_at DESC")
+      elsif !params[:user].blank?
+        @cocktail_recipes = CocktailRecipe.by_user(params[:user]).order(:title)
+      elsif params[:user_id]
+        @cocktail_recipes = User.find(params[:user_id]).cocktail_recipes.order('title ASC')
+      else
+        @cocktail_recipes = CocktailRecipe.all.order(:title)
+      end
     end 
 
 
@@ -35,22 +43,26 @@ class CocktailRecipesController < ApplicationController
 
     def destroy 
       @cocktail_recipe.destroy
-      redirect_to cocktail_recipes
+      redirect_to cocktail_recipes_url
     end
      
-      def update
-       @cocktail_recipe.update(cocktail_recipe_params)
+    def update
+      if @cocktail_recipe.update(cocktail_recipe_params)
+        redirect_to @cocktail_recipe, notice: "Your recipe has successfully been updated"
+      else 
+        redirect_to new_cocktail_recipe_path
       end
+    end
 
-   private
+    private
 
-   def cocktail_recipe_params
-     params.require(:cocktail_recipe).permit(:user_id, :category_name, :title, :directions, :description, :avatar) 
-   end 
+    def cocktail_recipe_params
+      params.require(:cocktail_recipe).permit(:user_id, :category_name, :title, :directions, :description, :avatar) 
+    end 
 
 
-   def find_cocktail_recipe
-    @cocktail_recipe = CocktailRecipe.find(params[:id])
-   end
+    def find_cocktail_recipe
+     @cocktail_recipe = CocktailRecipe.find(params[:id])
+    end
     
 end

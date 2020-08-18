@@ -10,12 +10,12 @@
 <h3>Ingredients:</h3> 
 <section id="ingredients">  
     <h3><% @cocktail_recipe.ingredients.each do |i| %></h3>  
-        <ul><h4><%= i.name%></h4> <button class="deleteIngredients" data-ingredient-id="<%= i.id %>">Delete</button></ul></ul>  
+        <ul class="f3 light-gray fw4 mt2 black-60"><big><%= i.name%></big><button style="margin-left:20px;" class="deleteIngredients f6 link dim br-pill ph3 pv3 mb2 dib white bg-black" data-ingredient-id="<%= i.id %>">Delete</button></ul></ul>  
         <%end%>     
 </section> 
 
 <section id="ingredients2"> 
-<button onclick = "this.disabled = true;" class="addIngredient btn-primary">Add Ingredient(s)</button> 
+<button onclick = "this.disabled = true;" class="addIngredient f3 link dim br-pill ph3 pv3 mb2 dib white bg-black">Add Ingredient(s)</button> 
 </section>   
    
  
@@ -27,9 +27,11 @@
 
 <small>Originally By: <%=link_to @cocktail_recipe.user.username, user_path(@cocktail_recipe.user) %></small><br></br>
 
-<% if @cocktail_recipe.user == current_user %>
-    <h2><%= link_to "Edit This Recipe", edit_cocktail_recipe_path, class: "btn btn-primary" %></h2> 
-    <h2><%= button_to "Delete", @cocktail_recipes_path, method: :delete, class: "btn btn-primary"%></h2>
+<% if @cocktail_recipe.user == current_user %> 
+<div data-no-turbolink>
+    <%= link_to "Edit This Recipe", edit_cocktail_recipe_path, class: "f2 link dim br-pill ph3 pv4 mb4 dib white bg-black" %> 
+    <%= button_to "Delete", cocktail_recipe_path, method: :delete, class: "f2 link dim br-pill ph3 pv3 mb2 dib white bg-black" %>
+</div>    
 <% end %></br>
 <hr class="my-4">
 
@@ -41,6 +43,8 @@
     <%end%>
 
 
+<h5>Add a comment:</h5>
+<%= render partial: "comments/form" %><br></br> 
 
 
 <button type="button" class="btn btn-primary"><big><%= link_to "Next Cocktail", @cocktail_recipe.next%></big></button></br><br>
