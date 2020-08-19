@@ -62,7 +62,7 @@ class CocktailRecipesController < ApplicationController
 
 
     def find_cocktail_recipe
-     @cocktail_recipe = CocktailRecipe.find(params[:id])
+      @cocktail_recipe = CocktailRecipe.find(params[:id])
     end
     
 end

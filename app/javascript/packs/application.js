@@ -99,9 +99,7 @@ require("channels")
   
     render() {
       return `
-      <ul class="f3 light-gray fw4 mt2 black-60"><big>${this.name}</big> <button class="deleteIngredient f6 link dim br-pill ph3 pv2 mb2 dib white bg-black" data-ingredient-id="${this.id}">Delete</button></ul>
-
-        
+      <ul class="f3 light-gray fw4 mt2 black-60"><big>${this.name}</big> <button class="deleteIngredient f6 link dim br-pill ph3 pv2 mb2 dib white bg-black" data-ingredient-id="${this.id}">Delete</button></ul>  
       `
     }
   

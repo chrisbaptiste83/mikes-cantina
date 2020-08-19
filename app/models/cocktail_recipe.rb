@@ -17,11 +17,11 @@ class CocktailRecipe < ApplicationRecord
 
     def category_name=(name)
       self.category = Category.find_or_create_by(name: name)
-   end
+    end
   
-   def category_name
-       self.category ? self.category.name : nil
-   end 
+    def category_name
+      self.category ? self.category.name : nil
+    end 
     
     def self.by_user(user_id)
       where(user: user_id)
@@ -32,12 +32,12 @@ class CocktailRecipe < ApplicationRecord
     end
 
     def previous
-        CocktailRecipe.all.order(:title).where("title < ?", title).last
+      CocktailRecipe.all.order(:title).where("title < ?", title).last
     end
       
 
     def next
-        CocktailRecipe.all.order(:title).where("title > ?", title).first
+      CocktailRecipe.all.order(:title).where("title > ?", title).first
     end
 
 

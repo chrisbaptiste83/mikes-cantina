@@ -1,5 +1,4 @@
-
- <div class="jumbotron button-style"> 
+<div class="jumbotron button-style"> 
  
   <h1>Cocktails:</h1><br> 
 
@@ -8,7 +7,8 @@
   <%= form_tag(cocktail_recipes_path, :method => "get", id: "search-form") do %>
     <%= text_field_tag :search, params[:search], placeholder: "Search Cocktails", :class => "form-control" %></br>
     <%= submit_tag "Search", :name => nil %>
-  <% end %>
+  <% end %> 
+
   <hr class="my-4">
 
   <h3>Filter Cocktails By User:</h3>
@@ -18,7 +18,6 @@
   <% end %>
 
 </div>
-
 
 
 <center>
